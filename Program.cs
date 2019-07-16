@@ -17,8 +17,14 @@ namespace backend
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var port = Environment.GetEnvironmentVariable("PORT");
+
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseUrls("http://*:" + port);
+        }
+
     }
 }
