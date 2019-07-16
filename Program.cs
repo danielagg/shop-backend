@@ -21,7 +21,7 @@ namespace backend
         {
             var port = Environment.GetEnvironmentVariable("PORT");
 
-            WebHost.CreateDefaultBuilder(args)
+            return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseUrls("http://*:" + port);
         }
